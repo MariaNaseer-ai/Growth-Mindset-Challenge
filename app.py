@@ -60,4 +60,4 @@ st.markdown("---")
 st.info("Remember: Every step, forward or backward, is part of your learning process. Keep going!")
 
 # Footer
-st.markdown("Made with ❤️ using Streamlit")
+st.markdown("Made with ❤️ **Maria Naseer Ahmed** using Streamlit")
