@@ -1,4 +1,3 @@
-
 import streamlit as st
 
 # Set page configuration
@@ -7,6 +6,10 @@ st.set_page_config(
     page_icon="🌱",
     layout="centered",
 )
+
+# Initialize session state to store reflections
+if "reflections" not in st.session_state:
+    st.session_state.reflections = []
 
 # Title and Introduction
 st.title("🌱 Growth Mindset Challenge")
@@ -51,9 +54,16 @@ reflection = st.text_area("Write about a time you turned a mistake into a learni
 
 if st.button("Submit Reflection"):
     if reflection.strip():
+        st.session_state.reflections.append(reflection)
         st.success("Thank you for sharing your experience! Keep growing!")
     else:
         st.warning("Please write something before submitting.")
+
+# Display Reflection History
+if st.session_state.reflections:
+    st.markdown("### Reflections History:")
+    for i, r in enumerate(reversed(st.session_state.reflections), 1):
+        st.markdown(f"**{i}.** {r}")
 
 # Final Message
 st.markdown("---")
